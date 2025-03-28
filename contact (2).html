@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Me - Megha Ghosh</title>
+    <!-- Font Awesome for icons -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* Global styles */
+      body {
+        margin: 0;
+        font-family: "Arial", sans-serif;
+        color: #fff;
+        background-color: #000;
+      }
+
+      /* Header */
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
+        background: linear-gradient(90deg, #1e3a8a, #3b82f6);
+      }
+
+      .logo {
+        font-size: 24px;
+        font-weight: bold;
+        color: #fff;
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav ul li {
+        margin-left: 20px;
+      }
+
+      nav ul li a {
+        text-decoration: none;
+        color: #fff;
+        font-weight: 500;
+      }
+
+      nav ul li a:hover {
+        text-decoration: none;
+      }
+
+      /* Contact section */
+      .contact-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 40px;
+        min-height: 100vh;
+        background: linear-gradient(180deg, #111, #333);
+        text-align: center;
+      }
+
+      .contact-section h1 {
+        font-size: 4vw;
+        font-weight: bold;
+        margin-bottom: 20px;
+        background: linear-gradient(90deg, #1e3a8a, #3b82f6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .contact-section p {
+        font-size: 1.2vw;
+        margin-bottom: 30px;
+        color: #aaa;
+      }
+
+      .contact-form {
+        max-width: 600px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #222;
+        border-radius: 8px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.6);
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+        box-sizing: border-box; /* Ensures no overflow from padding */
+        padding: 12px 15px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 4px;
+        font-size: 1rem;
+      }
+
+      .contact-form textarea {
+        resize: none;
+        height: 120px;
+      }
+
+      .contact-form button {
+        width: 100%;
+        padding: 12px 30px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: #fff;
+        background: linear-gradient(90deg, #1e3a8a, #3b82f6);
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .contact-form button:hover {
+        background: linear-gradient(90deg, #3b82f6, #1e3a8a);
+      }
+
+      /* Social media links */
+      .social-icons {
+        margin: 30px 0;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .social-icons a {
+        text-decoration: none;
+        color: #fff;
+        font-size: 28px;
+        transition: color 0.3s ease;
+      }
+
+      .social-icons a:hover {
+        color: #0dee0e8;
+      }
+
+      /* Footer */
+      footer {
+        text-align: center;
+        padding: 20px;
+        background: linear-gradient(90deg, #1e3a8a, #3b82f6);
+      }
+
+      footer p {
+        margin: 0;
+        font-size: 14px;
+        color: #fff;
+      }
+
+      /* Responsive Design for Small Screens */
+      @media (max-width: 768px) {
+        .contact-section h1 {
+          font-size: 8vw; /* Larger text for small screens */
+        }
+
+        .contact-section p {
+          font-size: 5vw; /* Larger text for description */
+        }
+
+        .contact-form {
+          padding: 15px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+          font-size: 1rem;
+          padding: 10px;
+        }
+
+        .contact-form button {
+          font-size: 1rem;
+        }
+
+        .social-icons a {
+          font-size: 22px; /* Slightly smaller icons for mobile */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="logo">T. Nishnath</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="index.html#featured-projects">Works</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+      <h1>Contact Me</h1>
+      <p>
+        Got a question or want to collaborate? Feel free to reach out using the
+        form below or through my social media channels.
+      </p>
+
+      <!-- Contact Form -->
+      <div class="contact-form">
+        <form action="https://formspree.io/f/xpwpjqrb" method="POST">
+          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="email" name="email" placeholder="Your Email" required />
+          <textarea
+            name="message"
+            placeholder="Your Message"
+            required
+          ></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+
+      <!-- Social Media Icons -->
+      <div class="social-icons">
+        <a
+          href="https://www.instagram.com/nishnaththungathurthy/"
+          target="_blank"
+          ><i class="fab fa-instagram"></i
+        ></a>
+        <a
+          href="https://www.facebook.com/nishnath.thungathurthy"
+          target="_blank"
+          ><i class="fab fa-facebook-f"></i
+        ></a>
+        <a href="https://github.com/Nishnath2" target="_blank"
+          ><i class="fab fa-github"></i
+        ></a>
+        <a href="mailto:tnishnathb7@gmail.com" target="_blank"
+          ><i class="fas fa-envelope"></i
+        ></a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2025 Nishnath Bharadwaj Thungathurthy . All Rights Reserved.</p>
+    </footer>
+  </body>
+</html>
