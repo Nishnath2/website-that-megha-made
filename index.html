@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | Nishnath</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: #000; 
+      color: #fff;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: linear-gradient(to right, #000, #003366); /* Bluish gradient */
+    }
+
+    header img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+
+    header nav ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    header nav ul li {
+      margin-left: 20px;
+    }
+
+    header nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    header nav ul li a:hover {
+      color: #00cfff;
+    }
+
+    #home {
+      display: flex;
+      align-items: center;
+      padding: 2rem 4rem;
+      gap: 2rem; 
+    }
+
+    .intro {
+      max-width: 50%;
+    }
+    
+
+    .intro h1 {
+      font-size: 3rem;
+      margin: 0;
+      position: relative;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #fff; 
+      animation: typing 3s steps(20, end), blink 0.5s step-end infinite alternate;
+    }
+
+    @keyframes typing {
+      from {
+        width: 0;
+      }
+      to {
+        width: 100%;
+      }
+    }
+
+    @keyframes blink {
+      50% {
+        border-color: transparent;
+      }
+    }
+
+    .intro h1.typing-complete {
+      border-right: none; 
+    }
+
+    .intro h2 {
+      color: #00cfff;
+      font-size: 2.3rem;
+      margin: 0.5rem 0;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .intro p {
+      margin: 1rem 0;
+      line-height: 2;
+    }
+
+    
+    
+    .buttons .btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #00cfff;
+      color: #000;
+      text-decoration: none;
+      font-weight: bold;
+      margin-right: 10px;
+      border-radius: 5px;
+      
+    }
+
+    .buttons .btn-outline {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: 2px solid #00cfff;
+      color: #00cfff;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      margin-right: 10px;
+      
+    }
+
+    .image img {
+      max-width: 450px; 
+      border-radius: 10px;
+      animation: fadeInOut 8.4s infinite; 
+    }
+
+    @keyframes fadeInOut {
+      0%, 100% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      #home {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .intro, .image {
+        max-width: 100%;
+      }
+    }
+    #skills {
+      padding: 2rem 4rem;
+    }
+
+    #skills h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    #skills ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    #skills ul li {
+      font-size: 1.2rem;
+      background: #1a1a1a;
+      padding: 1rem;
+      border-radius: 10px;
+      color: #00cfff; /* Blue text */
+      font-weight: bold;
+      flex: 1 1 calc(33% - 20px);
+      text-align: center;
+    }
+
+    #skills ul li span {
+      display: block;
+      color: #fff; /* White for the level */
+      font-size: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+      #home {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .intro, .image {
+        max-width: 100%;
+      }
+
+      #skills ul li {
+        flex: 1 1 100%;
+      }
+    }
+    #featured-projects h2 {
+  text-align: center;
+  font-size: 3rem;
+  color: #00cfff; /* Blue color for "Featured Work" text */
+  margin-bottom: 2rem;
+}
+
+.projects {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 0 2rem; /* Added padding to the sides */
+  margin-bottom: 4rem; /* Creates space below the project slides */
+}
+
+.project-card {
+  background: #1a1a1a;
+  border-radius: 10px;
+  padding: 1rem;
+  padding-bottom: 4rem; /* Ensures sufficient padding inside each card */
+  flex: 1 1 calc(25% - 20px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.project-card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.project-card h3 {
+  font-size: 1.5rem;
+  margin: 0.5rem 0;
+}
+
+.project-card p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.project-card a {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #00cfff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+    .chatbot-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: white;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            z-index: 1000;
+        }
+        .chatbot-button:hover {
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+        }
+        /* Chatbot Container */
+        .chatbot {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 300px;
+            max-height: 400px;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            display: none;
+            flex-direction: column;
+            background: linear-gradient(135deg, #375dc6, #4889f1);
+            animation: pop-up 0.3s ease-in-out;
+        }
+
+
+        @keyframes pop-up {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .chatbot-header {
+            background: #1e3a8a;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+        }
+
+        .chatbot-input {
+            display: flex;
+            border-top: 1px solid #ddd;
+        }
+
+        .chatbot-input input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            outline: none;
+        }
+
+        .chatbot-input button {
+            padding: 10px;
+            background: #1e3a8a;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+      
+      background: linear-gradient(to right, #000, #003366);
+      border-top: 1px solid #333;
+      
+    }
+
+    footer ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    footer ul li {
+      margin: 0 15px;
+    }
+
+    footer ul li a img {
+      width: 30px; /* Larger icon size */
+      height: 30px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://assets.onecompiler.app/439qm7kx5/43cxqx6tz/p3.png.webp" alt="Logo">
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#featured-projects">My Works</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+ 
+  <section id="home">
+    <div class="intro">
+      <h1 id="typing-text">Hi, I'm Nishnath Bharadwaj</h1>
+      <h2>Software Developer</h2>
+      <p>I am currently working in Accenture. An aspiring student planning my master’s in Australia and an avid nature lover.</br>  Web Development | C++ | Data Science | Java </BR> </BR></p>
+      <div class="buttons">
+        <a href="#featured-projects" class="btn">My Works</a>
+        <a href="#skills" class="btn-outline">Skills</a>
+        <a href="#skills" class="btn-outline">Experience</a>
+      </div>
+    </div>
+    <div class="image">
+      <img src="https://assets.onecompiler.app/439qm7kx5/43cxqx6tz/nish.png" alt="Profile Image">
+    </div>
+  </section>
+</BR></BR></BR></BR></BR>
+  <section id="skills">
+    <h2>Skills</h2>
+    <ul>
+      <li>C++ <span> Expert </span></li>
+      <li>JAVA <span>Expert </span></li>
+      <li>C <span> Expert</span></li>
+      <li>PYTHON <span> Good </span></li>
+      <li>ENGLISH <span> Expert </span></li>
+      <li>TELUGU <span> Expert </span></li>
+    </ul>
+  </section>
+   <section id="skills">
+    <h2>Experience</h2>
+    <ul>
+      <li>2024 - Current: <span> Accenture as ASE </span></li>
+      <li>2022 - 2024: <span> AUTHENTICATION IN MOBILE DEVICE SECURITY </span></li>
+      <li>2022 - 2024: <span>Project- Multilevel Data Concealing Technique Using Steganography and Visual Cryptography</span></li>
+    </ul>
+  </section>
+
+  <section id="featured-projects" >
+    
+    <h2>Featured Works</h2> 
+    <div class="projects">
+      <div class="project-card">
+        <img src="https://assets.onecompiler.app/439qm7kx5/43cxqx6tz/p1.png" alt="Chat Bot">
+        <h3>Multilevel Data Concealing</h3>
+        <p>Steganography is a data hiding technique that uses images, audio, or video as a cover medium. Cryptography has become an essential part of security. Image Steganography is one such way to hide secret messages in an image to reduce vulnerability to cryptanalysis. We overcome the drawbacks of using only textual steganography as it is easier to intercept and decipher.</p>
+        <a href="https://drive.google.com/file/d/1P4towkznbHmgkub8aKv_sttq4zu-y1rI/view?usp=drivesdk">Download pdf</a>
+      </div>
+      <div class="project-card">
+        <img src="https://assets.onecompiler.app/439qm7kx5/43cxqx6tz/p2.png" alt="MOBILE DEVICE SECURITY">
+        <h3>AUTHENTICATION IN MOBILE DEVICE SECURITY</h3>
+        <p>With the advancement of technology on mobile devices, living life through modern technology seems convenient and beneficial. Various sensors and applications installed on mobile devices support and continuously change the way of people’s life, such as how to communicate with each other, shop, and make transactions on financial and banking platforms.</p>
+        <a href="https://drive.google.com/file/d/1dGhUe6zcV0r8jmym1Z44JGE2nGCfze7n/view?usp=drivesdk">Download pdf</a>
+      </div>
+      <div class="project-card">
+        <img src="https://assets.onecompiler.app/439qm7kx5/43cxqx6tz/3.png" alt="resume">
+        <h3>Resume</h3>
+        <p>A brief document containing my skills, info and experience.</p>
+        <a href="https://drive.google.com/file/d/1Ye6yNl6kKGHXryY5Ioe5u_aWiLy-RRMz/view?usp=drivesdk">Download pdf</a>
+      </div>
+      
+    </div>
+  </section>
+  <!-- Chatbot -->
+    <button class="chatbot-button" id="chatbot-toggle">💬</button>
+    <div class="chatbot" id="chatbot">
+        <div class="chatbot-header">Nishnath here</div>
+        <div class="chatbot-messages" id="chatbot-messages">
+            <p><strong>Nishnath:</strong> Hi, welcome to my Portfolio</p>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatbot-input" placeholder="Type your message here...">
+            <button id="chatbot-send">Send</button>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            // Toggle Chatbot Visibility
+            $("#chatbot-toggle").click(function () {
+                $("#chatbot").fadeToggle();
+            });
+
+            // Handle Chatbot Input
+            $("#chatbot-send").click(function () {
+                const userMessage = $("#chatbot-input").val();
+                if (userMessage.trim() !== "") {
+                    $("#chatbot-messages").append(`<p><strong>You:</strong> ${userMessage}</p>`);
+                    $("#chatbot-input").val("");
+
+                    // Simulate bot response
+                    setTimeout(() => {
+                        $("#chatbot-messages").append(`<p><strong>Nishnath:</strong> I'm working in Accenture currently as ASE</p>`);
+                        
+                        $("#chatbot-messages").scrollTop($("#chatbot-messages")[0].scrollHeight);
+                    }, 500);
+                    setTimeout(() => {
+                        
+                        $("#chatbot-messages").append(`<p><strong>Nishnath:</strong> My skills are in java, python, data science and web dev.</p>`);
+                        $("#chatbot-messages").scrollTop($("#chatbot-messages")[0].scrollHeight);
+                    }, 500);
+                    
+                }
+            });
+
+            // Handle Enter Key
+            $("#chatbot-input").keypress(function (e) {
+                if (e.which == 13) { // Enter key pressed
+                    $("#chatbot-send").click();
+                }
+            });
+        });
+    </script>
+<footer>
+    <ul>
+      <li>
+        <a href="https://www.instagram.com/nishnaththungathurthy/" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+        </a>
+      </li>
+      <li>
+        <a href="https://www.facebook.com/nishnath.thungathurthy" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook">
+        </a>
+      </li>
+      <li>
+        <a href="https://www.linkedin.com/in/t-nishnath-bharadwaj-7a72b4293/" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/Nishnath2" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub">
+        </a>
+      </li>
+    </ul>
+  </footer>
+  <script>
+    // Remove the blinking bar after typing animation ends
+    const typingText = document.getElementById("typing-text");
+    typingText.addEventListener("animationend", () => {
+      typingText.classList.add("typing-complete");
+    });
+  </script>
+</body>
+</html>
