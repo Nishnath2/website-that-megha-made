@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Me - nishnath</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* Global styles */
+      body {
+        margin: 0;
+        font-family: "Arial", sans-serif;
+        color: #fff;
+        background-color: #000;
+        overflow-x: hidden;
+      }
+
+      /* Header section */
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
+        background: linear-gradient(180deg, #001f3f, #003366);
+        animation: fadeIn 2s ease-in;
+      }
+
+      .logo {
+        font-size: 24px;
+        font-weight: bold;
+        color: #fff;
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav ul li {
+        margin-left: 20px;
+      }
+
+      nav ul li a {
+        text-decoration: none;
+        color: #fff;
+        font-weight: 500;
+      }
+
+      nav ul li a:hover {
+        color: #21cfea;
+      }
+
+      .highlight {
+        font-weight: bold;
+        background: linear-gradient(90deg, #0e4c89, #3b8ad9);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      /* Button */
+      .cta {
+        display: inline-block;
+        padding: 15px 30px;
+        background: linear-gradient(90deg, #001f3f, #003366);
+        color: #fff;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 1.2vw;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      .cta:hover {
+        background: linear-gradient(90deg, #003366, #001f3f);
+      }
+
+      /* About Section */
+      .about {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        padding: 60px 20px;
+        min-height: 100vh;
+        background: linear-gradient(180deg, #111, #333);
+      }
+
+      .about .image {
+        flex: 1;
+        max-width: 500px;
+        padding: 20px;
+        text-align: center;
+        animation: slideInLeft 2s ease-out;
+      }
+
+      .about .image img {
+        width: 100%;
+        max-width: 400px;
+        border-radius: 10px;
+        border: 5px solid #444;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+      }
+
+      .about .content {
+        flex: 1;
+        max-width: 600px;
+        padding: 20px;
+        text-align: left;
+        animation: slideInRight 2s ease-out;
+      }
+
+      .about .content h1 {
+        font-size: 4vw;
+        font-weight: 900;
+        background: linear-gradient(90deg, #0e4c89, #3b8ad9);
+        webkit-background-clip: text;
+        webkit-text-fill-color: transparent;
+        margin: 0;
+      }
+
+      .about .content .typewriter {
+        overflow: hidden;
+        white-space: nowrap;
+        animation: typing 3.5s steps(40, end);
+        font-size: 4vw;
+        font-weight: 900;
+        background: linear-gradient(90deg, #0e4c89, #3b8ad9);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin: 0;
+      }
+
+      .about .content p {
+        font-size: 1.5vw;
+        margin-top: 20px;
+        color: #aaa;
+        line-height: 1.6;
+        animation: fadeInUp 2s ease-in;
+      }
+
+      /* Footer */
+      footer {
+        text-align: center;
+        padding: 10px;
+        background: linear-gradient(180deg, #003366, #001f3f);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        animation: fadeIn 2s ease-in;
+      }
+
+      .social-icons {
+        margin: 10px 0;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .social-icons a {
+        text-decoration: none;
+        color: #fff;
+        font-size: 24px;
+        transition: transform 0.3s ease;
+      }
+
+      .social-icons a:hover {
+        color: #007bff;
+        transform: scale(1.2);
+      }
+
+      footer p {
+        margin: 0;
+        font-size: 14px;
+        color: #777;
+      }
+
+      /* Animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-100px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes slideInRight {
+        from {
+          opacity: 0;
+          transform: translateX(100px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+
+      @keyframes blink-caret {
+        from,
+        to {
+          border-color: transparent;
+        }
+        50% {
+          border-color: #de8108;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .about {
+          flex-direction: column-reverse;
+        }
+
+        .about .content {
+          text-align: center;
+        }
+
+        .about .content h1,
+        .about .content .typewriter {
+          font-size: 6vw;
+        }
+
+        .about .content p {
+          font-size: 3.5vw;
+        }
+
+        .about .image img {
+          max-width: 300px;
+        }
+      }
+    </style>
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="logo">T. Nishnath</div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Portfolio</a></li>
+          <li><a href="index.html#featured-projects">My Works</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- About Section -->
+    <section class="about">
+      <!-- Left half: Image -->
+      <div class="image">
+        <img
+          src="https://assets.onecompiler.app/439qm7kx5/43d4xskfn/ne.jpg"
+          width="310"
+          height="850"
+          alt="nishnath"
+        />
+      </div>
+
+      <!-- Right half: Text content -->
+      <div class="content">
+        <h1 class="typewriter">About Me</h1>
+        <p>
+          Hi, I’m Nishnath, a dynamic software engineer at Accenture, having
+          joined the organization in October 2024. Trained in Oracle Siebel, I
+          have honed my expertise in
+          <span class="highlight">CRM solutions</span> while diversifying my
+          technical skills in <span class="highlight">Java</span>,
+          <span class="highlight">Python</span>,
+          <span class="highlight">web development</span>, and
+          <span class="highlight">data science</span>. With a strong foundation
+          in programming and a passion for creating
+          <span class="highlight">efficient and innovative solutions</span>, I
+          bring a meticulous and results-driven approach to every project.
+        </p>
+        <p>
+          Currently based in Hyderabad, I am proud of my
+          <span class="highlight">Telugu roots</span> and draw inspiration from
+          <span class="highlight">nature</span>, often seeking solace in its
+          beauty to fuel my <span class="highlight">creativity</span> and
+          <span class="highlight">problem-solving abilities</span>. Looking
+          ahead, I plan to pursue a
+          <span class="highlight">master’s degree</span> in Australia starting
+          in July, further expanding my knowledge and career opportunities. With
+          my <span class="highlight">diverse skill set</span> and unwavering
+          determination, I am well-prepared to thrive in both academic and
+          professional environments.
+        </p>
+        <!-- My Works Button -->
+        <a href="index.html#featured-projects" class="cta">My Works</a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="social-icons">
+        <a
+          href="https://www.instagram.com/nishnaththungathurthy/"
+          target="_blank"
+          ><i class="fab fa-instagram"></i
+        ></a>
+        <a
+          href="https://www.facebook.com/nishnath.thungathurthy"
+          target="_blank"
+          ><i class="fab fa-facebook-f"></i
+        ></a>
+        <a href="https://github.com/Nishnath2" target="_blank"
+          ><i class="fab fa-github"></i
+        ></a>
+        <a href="mailto:tnishnathb7@gmail.com" target="_blank"
+          ><i class="fas fa-envelope"></i
+        ></a>
+      </div>
+      <p>&copy; 2025 Nishnath Bharadwaj Thungathurthy. All Rights Reserved.</p>
+    </footer>
+  </body>
+</html>
