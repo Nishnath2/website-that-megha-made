@@ -50,7 +50,68 @@
     header nav ul li a:hover {
       color: #00cfff;
     }
-
+    /* Logo1 styles */
+.logo1 {
+  position: relative;
+  font-family: "Arial", sans-serif;
+  font-weight: bold;
+  color: #ffffff;
+  font-size: 4rem;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logo1::before,
+.logo1::after {
+  content: "<";
+  font-size: 5rem;
+  color: #3a7bd5; /* Blue gradient base */
+  position: absolute;
+  animation: bracket-blink 2s infinite;
+}
+.logo1::after {
+  content: ">";
+  right: -70px;
+  transform: rotateY(180deg);
+  animation-delay: 1s;
+}
+.logo1::before {
+  left: -70px;
+}
+.text {
+  animation: text-glow 1.5s infinite alternate;
+}
+@keyframes text-glow {
+  from {
+    text-shadow: 0 0 10px #3a7bd5, 0 0 20px #3fada8; /* Blue shades */
+  }
+  to {
+    text-shadow: 0 0 30px #3fada8, 0 0 60px #3a7bd5; /* Blue shades */
+  }
+}
+@keyframes bracket-blink {
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+  25%,
+  75% {
+    opacity: 0.5;
+  }
+}
+/* Media query to show logo1 only on mobile screens */
+@media screen and (min-width: 769px) {
+  .logo1 {
+    display: none;
+  }
+}
+@media screen and (max-width: 769px) {
+  .image {
+    display: none;
+  }
+}
     #home {
       display: flex;
       align-items: center;
@@ -202,21 +263,37 @@
       font-size: 1rem;
       margin-top: 0.5rem;
     }
-
     @media (max-width: 768px) {
-      #home {
-        flex-direction: column;
+    #typing-text {
+        font-size: 5vw; /* Adjust for smaller screens */
         text-align: center;
-      }
+        line-height: 1.5; /* Space between lines */
+    }
 
-      .intro, .image {
-        max-width: 100%;
-      }
-
-      #skills ul li {
-        flex: 1 1 100%;
+    #typing-text::after {
+        content: "";
+        display: block; /* Forces "Nishnath Bharadwaj" to move to the next line */
       }
     }
+
+    @media (max-width: 768px) {  
+    #home {  
+        flex-direction: column;  
+        text-align: center;  
+          }  
+    .buttons {  
+        display: flex;  
+        flex-direction: column;  
+        align-items: center;  
+        gap: 5px; /* Adjust spacing between buttons */  
+    }  
+    .intro, .image {  
+        max-width: 100%;  
+    }  
+    #skills ul li {  
+        flex: 1 1 100%;  
+    }  
+}
     #featured-projects h2 {
   text-align: center;
   font-size: 3rem;
@@ -299,7 +376,7 @@
             bottom: 80px;
             right: 20px;
             width: 300px;
-            max-height: 400px;
+            max-height: 1000px;
             border: 1px solid #ddd;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
@@ -397,6 +474,9 @@
   </header>
  
   <section id="home">
+    <div class="logo1">
+        <span class="text">TNB</span>
+      </div>
     <div class="intro">
       <h1 id="typing-text">Hi, I'm Nishnath Bharadwaj</h1>
       <h2>Software Developer</h2>
@@ -404,7 +484,7 @@
       <div class="buttons">
         <a href="#featured-projects" class="btn">My Works</a>
         <a href="#skills" class="btn-outline">Skills</a>
-        <a href="#skills" class="btn-outline">Experience</a>
+        <a href="#exp" class="btn-outline">Experience</a>
       </div>
     </div>
     <div class="image">
@@ -423,6 +503,7 @@
       <li>TELUGU <span> Expert </span></li>
     </ul>
   </section>
+   <section id="exp">
    <section id="skills">
     <h2>Experience</h2>
     <ul>
@@ -431,7 +512,7 @@
       <li>2022 - 2024: <span>Project- Multilevel Data Concealing Technique Using Steganography and Visual Cryptography</span></li>
     </ul>
   </section>
-
+  </section>
   <section id="featured-projects" >
     
     <h2>Featured Works</h2> 
@@ -471,41 +552,87 @@
     </div>
 
     <script>
-        $(document).ready(function () {
-            // Toggle Chatbot Visibility
-            $("#chatbot-toggle").click(function () {
-                $("#chatbot").fadeToggle();
-            });
-
-            // Handle Chatbot Input
-            $("#chatbot-send").click(function () {
-                const userMessage = $("#chatbot-input").val();
-                if (userMessage.trim() !== "") {
-                    $("#chatbot-messages").append(`<p><strong>You:</strong> ${userMessage}</p>`);
-                    $("#chatbot-input").val("");
-
-                    // Simulate bot response
-                    setTimeout(() => {
-                        $("#chatbot-messages").append(`<p><strong>Nishnath:</strong> I'm working in Accenture currently as ASE</p>`);
-                        
-                        $("#chatbot-messages").scrollTop($("#chatbot-messages")[0].scrollHeight);
-                    }, 500);
-                    setTimeout(() => {
-                        
-                        $("#chatbot-messages").append(`<p><strong>Nishnath:</strong> My skills are in java, python, data science and web dev.</p>`);
-                        $("#chatbot-messages").scrollTop($("#chatbot-messages")[0].scrollHeight);
-                    }, 500);
-                    
-                }
-            });
-
-            // Handle Enter Key
-            $("#chatbot-input").keypress(function (e) {
-                if (e.which == 13) { // Enter key pressed
-                    $("#chatbot-send").click();
-                }
-            });
+         $(document).ready(function () {
+        // Toggle Chatbot Visibility
+        $("#chatbot-toggle").click(function () {
+            $("#chatbot").fadeToggle();
         });
+           // Predefined FAQ Responses
+        const responses = {
+            "hi": "Hi, I am Nishnath.",
+            "hello": "Hi, I am Nishnath.",
+            "how are you doing?": "I am doing good.",
+            "who made this website?": "This website is built by Nishnath.",
+            "what are your skills?": "The skills.",
+            "what are your experiences?": "The experiences.",
+            "bye": "Goodbye!",
+            "what is your contact?": "My contact details are given in the contact section.",
+            "how to contact you?": "My contact is given."
+        };
+
+
+        // Handle Chatbot Input
+        $("#chatbot-send").click(function () {
+            const userMessage = $("#chatbot-input").val().trim();
+            if (userMessage !== "") {
+                $("#chatbot-messages").append(`<p><strong>You:</strong> ${userMessage}</p>`);
+                $("#chatbot-input").val("");
+
+                // Generate bot response
+                let botResponse = "";
+                if (/skills|skill|what are your skills|knowledge?/i.test(userMessage)) {
+                    botResponse = "My skills are in Java, C, Data Science, and Web Development.";
+                } else if (/experience|work|what are your experiences|works/i.test(userMessage)) {
+                    botResponse = "I am currently working in Accenture as an ASE.";
+                } else if (/who made this website/i.test(userMessage)) {
+                    botResponse = "this website is built by Nishnath.";
+                }
+                else if (/hi|hello/i.test(userMessage)) {
+                    botResponse = "Hi, I am Nishnath.";
+                }
+                else if (/how are you doing/i.test(userMessage)) {
+                    botResponse = "I am doing good";
+                }
+                else if (/bye/i.test(userMessage)) {
+                    botResponse = "bye, have a great day!";
+                }
+                else if (/what is your contact|how to contact you|contact/i.test(userMessage)) {
+                    botResponse = "My contact details are given in the contact section.";
+                }
+                else if (/how are you|how are u/i.test(userMessage)) {
+                    botResponse = "I am good, how are you?";
+                }
+                else if (/i am fine|I am fine/i.test(userMessage)) {
+                    botResponse = "great to hear";
+                }
+                else if (/what are your hobbies|hobbies/i.test(userMessage)) {
+                    botResponse = "my hobbies are chess, cricket and listning to music"; 
+                }
+                else if (/where do you live|live/i.test(userMessage)) {
+                    botResponse =  "I currently live in Hyderabad"; 
+                }
+                else if (/goals/i.test(userMessage)) {
+                    botResponse = "M. Tech in Aus";
+                }
+                else {
+                    botResponse = "For more details, please go to my contact section or check out my skills.";
+                }
+
+                // Simulate bot response
+                setTimeout(() => {
+                    $("#chatbot-messages").append(`<p><strong>Nishnath:</strong> ${botResponse}</p>`);
+                    $("#chatbot-messages").scrollTop($("#chatbot-messages")[0].scrollHeight);
+                }, 500);
+            }
+        });
+
+        // Handle Enter Key
+        $("#chatbot-input").keypress(function (e) {
+            if (e.which == 13) { // Enter key pressed
+                $("#chatbot-send").click();
+            }
+        });
+    });
     </script>
 <footer>
     <ul>
